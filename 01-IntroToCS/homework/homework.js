@@ -2,13 +2,15 @@
 
 function BinarioADecimal(num) {
   // tu codigo aca
-  
+  const arr = num.split("").reverse();
   let result = 0;
-  let n = num.length - 1; 
 
   for (let i = 0; i < num.length; i++) {
-    result += num[i] * 2 ** n;
-    n -= 1;
+    let n = arr.indexOf(arr[i], i);
+    let toNum = arr[i] - 0;
+
+    let decimal = toNum * 2 ** n;
+    result += decimal;
   }
 
   return result;

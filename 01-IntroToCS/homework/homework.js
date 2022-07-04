@@ -2,6 +2,7 @@
 
 function BinarioADecimal(num) {
   // tu codigo aca
+  
   let result = 0;
   let n = num.length - 1; 
 

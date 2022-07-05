@@ -19,18 +19,13 @@ function BinarioADecimal(num) {
 function DecimalABinario(num) {
   // tu codigo aca
   let binary = "";
-  let result = "";
 
   while (num > 0) {
-    binary += num % 2;
+    binary = num % 2 + binary;
     num = Math.floor(num / 2);
   }
 
-  for (let i = binary.length - 1; i >= 0; i--) {
-    result += binary[i];
-  }
-
-  return result;
+  return binary;
 }
 
 module.exports = {

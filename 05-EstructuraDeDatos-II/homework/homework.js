@@ -117,19 +117,34 @@ HashTable.prototype.hash = function (toBeHashed) {
 HashTable.prototype.set = function (key,value) {
   if(typeof key !== 'string') throw new TypeError('Keys must be strings');
 
-  hashed = this.hash(key);
+  let hashed = this.hash(key);
 
-  this.table[hashed] = {[key]: value};
+  if(!this.table[hashed]) {
+    return this.table[hashed] = {[key]: value};
+  } else {
+    this.table[hashed][key] = value;
+  }
 };
 
 HashTable.prototype.get = function (key) {
   const pos = this.hash(key);
+
   if(this.table[pos]) {
+    if(this.table[pos][key]) {
       return this.table[pos][key];
+    }
   }
 };
 
-HashTable.prototype.hasKey = function () {};
+HashTable.prototype.hasKey = function (key) {
+  const pos = this.hash(key);
+
+  if(this.table[pos][key]){
+    return true;
+  } else {
+    return false;
+  }
+};
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
